@@ -1,0 +1,30 @@
+header{
+  padding: 15px;
+  
+}
+label{
+  color:white;
+}
+body{
+  background-image: url(../images/cdJud002.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: #d7e4e4;
+}
+h2{
+  text-align: center;
+}
+a{
+  color: #d7e4e4;
+}
+#banner{
+    width: 100%;
+}
+.frmDatos{
+  padding: 15px;
+  height: 100%;
+  background-color: rgba(0, 46, 102, .8);
+  -webkit-transform: skewY(0deg);
+  transform: skewY(0deg);
+}

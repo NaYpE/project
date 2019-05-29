@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -17,17 +18,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import mx.gob.ciudadjudicial.model.UsuariosTemp;
 
 /**
- * Servlet implementation class LogInServlet
+ * Servlet implementation class BusquedaServlet
  */
-@WebServlet(description = "Servlet para login", urlPatterns = { "/LogInServlet" })
-public class LogInServlet extends HttpServlet {
+@WebServlet("/BusquedaServlet")
+public class BusquedaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		Properties props = new Properties();
 		String archivo = "config.properties";
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(archivo);
@@ -43,64 +45,49 @@ public class LogInServlet extends HttpServlet {
 		String passw = props.getProperty("password");
 		String driver = props.getProperty("driver");
 		
-		String correo = request.getParameter("txtCorreo");
-		String password = request.getParameter("txtPassword");
-		String correoSQL = "";
-		String passwordSQL = "";
-		String nombreSQL = "";
-		String apellidoSQL = "";
+		String expediente = request.getParameter("txtExp");
 		
 		Connection conn = null;
 		Statement stmnt = null;
 		ResultSet rs = null;
 		
+		PrintWriter salida= response.getWriter();
+		
 		try {
+			response.setContentType("text/html charset='UTF-8'");
 			
-			Class.forName(driver).getDeclaredConstructor().newInstance();
-			conn = DriverManager.getConnection(urlServidor, usuario, passw);
+			Class.forName(driver).newInstance();
+			conn = DriverManager.getConnection(urlServidor,usuario,passw);
 			stmnt = conn.createStatement();
-			
-			rs = stmnt.executeQuery(" SELECT * FROM ciudad_judicial.usuarios WHERE email = \""+ correo +"\"");
-			
-			rs.next();
-			
-			correoSQL = rs.getString("email");
-			passwordSQL = rs.getString("password");
-			nombreSQL = rs.getString("nombre");
-			apellidoSQL = rs.getString("apellidoP");
-			
-			if(correo.equals(correoSQL) && password.equals(passwordSQL)) {
-				
-				HttpSession objetoSesion = request.getSession(true);
-				objetoSesion.setAttribute("Usuario", correo);
-				objetoSesion.setAttribute("Password", password);
-				objetoSesion.setMaxInactiveInterval(30);
-				response.sendRedirect("busqueda.jsp");
-				
-			}else {
-				
-				PrintWriter out = response.getWriter();
-				RequestDispatcher dis = request.getRequestDispatcher("index.html");
-				out.println("<font color='red'>Usuasio o contraseña no válidos, intente de nuevo</font>");
-				dis.include(request, response); 
-				
+			rs= stmnt.executeQuery(" SELECT * FROM ciudad_judicial.usuarios WHERE (nombre =\""+ expediente+"\" OR apellidoP =\""+ expediente +"\")");
+			UsuariosTemp users;
+			ArrayList<UsuariosTemp> listaUsers = new ArrayList<UsuariosTemp>();
+			while (rs.next()) {
+				users = new UsuariosTemp(rs.getString("nombre"),
+						rs.getString("apellidoP"), 
+						rs.getString("apellidoM"),
+						rs.getString("fechaNacimiento"),
+						rs.getString("sexo"),
+						rs.getString("email"),
+						rs.getString("password"));
+				listaUsers.add(users);
 			}
-			
-			
+			request.setAttribute("list", listaUsers);
+			RequestDispatcher rst =request.getRequestDispatcher("busqueda.jsp");
+			rst.forward(request, response);
 		} catch (Exception e) {
-			
 			e.printStackTrace();
-		}finally {
+		}
+		finally {
 			try {
 				rs.close();
-				conn.close();
 				stmnt.close();
+				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
+		salida.close();
 	}
 
 }

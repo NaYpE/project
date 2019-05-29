@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 , shrink-to-fit=no">
@@ -45,7 +47,7 @@
                     <a class="nav-link text-uppercase text-expanded" href="home.html">Home</a>
                 </li>
                 <li class="nav-item active px-lg-4">
-                    <a class="nav-link text-uppercase text-expanded" href="busqueda.html">Busqueda
+                    <a class="nav-link text-uppercase text-expanded" href="busqueda.jsp">Busqueda
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -65,8 +67,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
-                    <form class="form-inline d-flex">
-                        <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0 fas" id="inputEmail" placeholder="&#xF002; Buscar expediente...">
+                    <form class="form-inline d-flex" action="BusquedaServlet" method="POST">
+                        <input type="text" name="txtExp" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0 fas" id="txtExp" placeholder="&#xF002; Buscar expediente...">
                         <button type="submit" class="btn btn-primary mx-auto">Buscar</button>
                     </form>
                     <br/>
@@ -132,11 +134,26 @@
 
     <section class="contact-section">
         <div class="container">
-
-            <div id="resultados" class="row">
-
+			<div id="resultados" class="row">
+				<table class="table table-bordered table-dark">
+					<thead>
+						<tr>
+							<th scope="col">Nombre</th>
+							<th scope="col">ApellidoP</th>
+							<th scope="col">ApellidoM</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="myValue" items="${list}">
+							<tr>
+								<td scope="row"><c:out value="${myValue.nombre}"></c:out></td>
+								<td scope="row"><c:out value="${myValue.apellidoP}"></c:out></td>
+								<td scope="row"><c:out value="${myValue.apellidoM}"></c:out></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
             </div>
-
         </div>
     </section>
         

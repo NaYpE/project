@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@
 			</div>
 	    	<div class="col-xs-8 col-sm-10 col-md-8 col-lg-8 col-xl-6">
 	    	
-				<form class="frmDatos" action="SigninServlet" method="post">
+				<form class="frmDatos" action="SignUpServlet" method="POST">
 			        <p>
 			            <label for="txtNombre">Nombres: </label>
 			            <input class="form-control" type="text" id="txtNombre" name="txtNombre" placeholder="José Ángel">
@@ -59,7 +59,7 @@
 					<p>
 						<!--Podriamos validar con el correo electrónico que tipo de usuario es -->
 						<label for="txtCorreo">Correo electrónico: </label>
-						<input class="form-control" type="mail" id="txtCorreo" name="txtCorreo" placeholder="micorreo@dominio.com">
+						<input class="form-control" type="email" id="txtCorreo" name="txtCorreo" placeholder="micorreo@dominio.com">
 						<label for="txtPassword">Password: </label>
 						<input class="form-control" type="password" id="txtPassword" name="txtPassword" placeholder="1-8 caracteres">
 						<label for="txtPassword2">Confirma tu Password: </label>
@@ -67,8 +67,8 @@
 					</p>
 					<!--Podriamos poner un campo para que seleccionen los abogados su especialidad y le agregamos campos como "notaria" -->
 			        <p>
-							<input class="btn btn-primary" type="submit" value="GOo">
-						<button id="btnSignUp" class="btn btn-secondary" type="button">GOo</button>
+							<input class="btn btn-primary" type="submit" value="GOgo">
+						<button id="btnSignUp" class="btn btn-secondary" type="button">GOgo</button>
 			        </p>
 			    </form>
 			</div>

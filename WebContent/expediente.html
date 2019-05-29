@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+    <!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom fonts for this template -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Custom styles for this template -->
+    <link href="css/business-casual.min.css" rel="stylesheet">
+	<link href="css/style2.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <title>Consejo de la Judicatura del Estado de Jalisco</title>
+</head>
+<body>
+	<div class ="container">
+		<header>
+			<img src="images/banner_superior.jpg" id="banner">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<h2></h2>
+				</div>
+			</div>
+		</header>
+	</div>
+    <br/>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="home.html">Home</a>
+            </li>
+            <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="#">Busqueda</a>
+            </li>
+            <li class="nav-item active px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="expediente.html">Expedientes
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="#">Historial</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-xs-2 col-sm-1 col-md-2 col-lg-2 col-xl-3">
+        </div>
+        <div class="col-xs-8 col-sm-10 col-md-8 col-lg-8 col-xl-6">
+            <form class="formData" action="expedienteServlet" method="post">
+                <section id="contact">
+                    <div class="container">
+                        <h2 class="text-center text-uppercase text-secondary mb-0">EXPEDIENTES</h2>
+                        <hr class="star-dark mb-5">
+                        <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="row">
+                                <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>EXPEDIENTE</label>
+                                    <input class="form-control" id="txtExpediente" type="text" placeholder="EXPEDIENTE" required="required" data-validation-required-message="Por favor ingrese el número de expediente">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
+                                <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>TOMO</label>
+                                    <input class="form-control" id="txtTomo" type="text" placeholder="TOMO">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="images/logo_cdJud.png" id="banner">
+
+                            
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>PARTIDO JUDICIAL</label>
+                                <input class="form-control" id="phone" type="text" placeholder="PARTIDO JUDICIAL" required="required">
+                                <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <input list="browsers" name="browser">
+                                <datalist id="browsers">
+                                    <option value="1° Familiar">
+                                    <option value="2° Familiar">
+                                    <option value="3° Familiar">
+
+                                    <option value="1° Civil">
+                                    <option value="2° Civil">
+                                    <option value="3° Civil">
+                                </datalist>
+                            </div>
+                            <br>
+                            <p>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>CLASE DE JUICIO</label>
+                                    <input class="form-control" id="txtJuicio" type="text" placeholder="CLASE DE JUICIO" required="required">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>ACTOR</label>
+                                    <input class="form-control" id="txtActor" type="text" placeholder="ACTOR" required="required">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Abogado Patrono</label>
+                                    <input class="form-control" id="txtAbogadoPat" type="text" placeholder="Abogado Patrono">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Autorizados</label>
+                                    <input class="form-control" id="txtAutorizados" type="text" placeholder="Autorizados">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>DEMANDADO</label>
+                                    <input class="form-control" id="txtDemandado" type="text" placeholder="DEMANDADO" required="required">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Abogado Patrono</label>
+                                    <input class="form-control" id="txtAbogadoPat" type="text" placeholder="Abogado Patrono">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Autorizados</label>
+                                    <input class="form-control" id="txtAutorizados" type="text" placeholder="Autorizados">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                        <label>JUEZ LIC</label>
+                                        <input class="form-control" id="txtJuez" type="text" placeholder="JUEZ LIC" required="required" data-validation-required-message="Por favor ingrese nombre del Juéz">
+                                        <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                    <div class="control-group col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
+                                    <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                        <label>SRIO. LIC</label>
+                                        <input class="form-control" id="txtSrio" type="text" placeholder="SRIO. LIC" required="required" data-validation-required-message="Por favor ingrese el nombre del Secretario">
+                                        <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label for="txtBirth">INICIADO EN</label>
+			                        <input class="form-control text-uppercase" type="date" id="txtBirth" name="txtBirth" placeholder="INICIADO EN" required="required">
+                                    <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </p>
+                            <div id="success"></div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </section>  
+            </form>
+        </div>
+    </div>
+
+
+	<!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  
+    <!-- Contact Form JavaScript -->
+    <script src="scripts/jqBootstrapValidation.js"></script>
+    <script src="scripts/contact_me.js"></script>
+  
+    <!-- Custom scripts for this template -->
+    <script src="scripts/freelancer.js"></script>
+</body>
+</html>

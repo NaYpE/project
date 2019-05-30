@@ -93,6 +93,7 @@ public class CreateExpedienteServlet extends HttpServlet {
 		
 				response.sendRedirect("home.html");
 			}else {
+				
 				PrintWriter out = response.getWriter();
 				RequestDispatcher dis = request.getRequestDispatcher("signUp.html");
 				out.println("<script type:\"text/javascript\">");

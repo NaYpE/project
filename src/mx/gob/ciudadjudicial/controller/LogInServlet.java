@@ -64,10 +64,10 @@ public class LogInServlet extends HttpServlet {
 			
 			rs.next();
 			
-			correoSQL = rs.getString("email");
-			passwordSQL = rs.getString("password");
-			nombreSQL = rs.getString("nombre");
-			apellidoSQL = rs.getString("apellidoP");
+			correoSQL = rs.getString("correo_usuario");
+			passwordSQL = rs.getString("contrasena_usuario");
+			nombreSQL = rs.getString("nombre_usuario");
+			apellidoSQL = rs.getString("apellido_paterno_usuario");
 			
 			if(correo.equals(correoSQL) && password.equals(passwordSQL)) {
 				

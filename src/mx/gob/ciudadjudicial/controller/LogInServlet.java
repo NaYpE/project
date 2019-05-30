@@ -75,13 +75,16 @@ public class LogInServlet extends HttpServlet {
 				objetoSesion.setAttribute("Usuario", correo);
 				objetoSesion.setAttribute("Password", password);
 				objetoSesion.setMaxInactiveInterval(30);
-				response.sendRedirect("busqueda.jsp");
+				response.sendRedirect("homeCJ.html");
 				
 			}else {
 				
 				PrintWriter out = response.getWriter();
 				RequestDispatcher dis = request.getRequestDispatcher("index.html");
-				out.println("<font color='red'>Usuasio o contraseña no válidos, intente de nuevo</font>");
+				out.println("<script type:\"text/javascript\">");
+				out.println("alert('Usuario o contraseña no valido, intente de nuevo')");
+				out.println("location='index.html'");
+				out.println("</script>");
 				dis.include(request, response); 
 				
 			}

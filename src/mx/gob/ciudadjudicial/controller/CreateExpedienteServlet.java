@@ -91,17 +91,30 @@ public class CreateExpedienteServlet extends HttpServlet {
 			
 			if(nRegistros > 0) {
 		
+
 				response.sendRedirect("home.html");
+
+				System.out.println("guardo archivo");
+				response.sendRedirect("homeCJ.html");
+				PrintWriter out = response.getWriter();
+				RequestDispatcher dis = request.getRequestDispatcher("homeCJ.html");
+				out.println("<script type:\"text/javascript\">");
+				out.println("alert('Expediente agregado con exito')");
+				out.println("location='homeCJ.html'");
+				out.println("</script>");
+				dis.include(request, response); 
+				
+
 				
 			}else {
 				
 				PrintWriter out = response.getWriter();
-				RequestDispatcher dis = request.getRequestDispatcher("signUp.html");
+				RequestDispatcher dis = request.getRequestDispatcher("expediente.html");
 				out.println("<script type:\"text/javascript\">");
 				out.println("alert('Registro no añadido. Intente de nuevo')");
 				out.println("location='expediente.html'");
 				out.println("</script>");
-				dis.include(request, response); response.getWriter().append("Registro NO añadido");
+				dis.include(request, response); 
 			}
 			
 		} catch (Exception e) {

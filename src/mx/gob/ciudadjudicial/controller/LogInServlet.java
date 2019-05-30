@@ -60,7 +60,7 @@ public class LogInServlet extends HttpServlet {
 			conn = DriverManager.getConnection(urlServidor, usuario, passw);
 			stmnt = conn.createStatement();
 			
-			rs = stmnt.executeQuery(" SELECT * FROM ciudad_judicial.usuarios WHERE email = \""+ correo +"\"");
+			rs = stmnt.executeQuery(" SELECT * FROM judicial.usuarios WHERE correo_usuario = \""+ correo +"\"");
 			
 			rs.next();
 			

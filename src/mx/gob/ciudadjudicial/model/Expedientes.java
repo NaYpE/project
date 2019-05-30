@@ -3,7 +3,7 @@ package mx.gob.ciudadjudicial.model;
 public class Expedientes {
 	
 
-	private String expediente;
+	private int expediente;
     private String tomo; 
     private String partidojuicio; 
     private String juzgado; 
@@ -21,7 +21,7 @@ public class Expedientes {
 		
 	}
     
-	public Expedientes(String expediente, String tomo, String partidojuicio, String juzgado, String actor,
+	public Expedientes(int expediente, String tomo, String partidojuicio, String juzgado, String actor,
 			String abogadoPatrono, String autorizados, String demandado, String abogadoPatrono2, String autorizados2,
 			String juez, String srio, String fecha) {
 		
@@ -42,12 +42,12 @@ public class Expedientes {
 
 	
 	
-	public String getExpediente() {
+	public int getExpediente() {
 		return expediente;
 	}
 
 
-	public void setExpediente(String expediente) {
+	public void setExpediente(int expediente) {
 		this.expediente = expediente;
 	}
 

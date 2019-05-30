@@ -3,6 +3,7 @@ package mx.gob.ciudadjudicial.controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -64,7 +66,7 @@ public class CreateExpedienteServlet extends HttpServlet {
 			Class.forName(driver).getDeclaredConstructor().newInstance();
 			conn = DriverManager.getConnection(urlServidor, usuario, passw);
 			
-			String query ="INSERT INTO judicial.expedientes (idExpedientes,actor_expediente,demandante_expediente,tipo_juicio_expediente,num_expediente,tomo,abogado_patrono,autorizados,fecha,abogado_patrono_dos,autorizados_dos,juez_expedientes,juzgado_expediente,srio_lic) VALUES (0,?,?,?,?, ?, ?, ?, ?, ?, ?,?,?,?)";
+			String query ="INSERT INTO judicial.expedientes (idExpedientes,actor_expediente,demandante_expediente,tipo_juicio_expediente,num_expediente,tomo,abogado_patrono,autorizados,fecha,abogado_patrono_dos,autorizados_dos,juez_expediente,juzgado_expediente,srio_lic) VALUES (0,?,?,?,?, ?, ?, ?, ?, ?, ?,?,?,?)";
 			
 			PreparedStatement pstmnt = conn.prepareStatement(query);
 			
@@ -72,7 +74,7 @@ public class CreateExpedienteServlet extends HttpServlet {
 			pstmnt.setString(1, miExpediente.getActor());
 			pstmnt.setString(2, miExpediente.getDemandado());
 			pstmnt.setString(3, miExpediente.getPartidojuicio());
-			pstmnt.setString(4, miExpediente.getExpediente());
+			pstmnt.setInt(4, miExpediente.getExpediente());
 			pstmnt.setString(5, miExpediente.getTomo());
 			pstmnt.setString(6, miExpediente.getAbogadoPatrono());
 			pstmnt.setString(7, miExpediente.getAutorizados());
@@ -88,11 +90,16 @@ public class CreateExpedienteServlet extends HttpServlet {
 					nRegistros = pstmnt.executeUpdate();
 			
 			if(nRegistros > 0) {
-				
-				
-				response.getWriter().append("Registro añadido");
+		
+				response.sendRedirect("home.html");
 			}else {
-				response.getWriter().append("Registro NO añadido");
+				PrintWriter out = response.getWriter();
+				RequestDispatcher dis = request.getRequestDispatcher("signUp.html");
+				out.println("<script type:\"text/javascript\">");
+				out.println("alert('Registro no añadido. Intente de nuevo')");
+				out.println("location='expediente.html'");
+				out.println("</script>");
+				dis.include(request, response); response.getWriter().append("Registro NO añadido");
 			}
 			
 		} catch (Exception e) {

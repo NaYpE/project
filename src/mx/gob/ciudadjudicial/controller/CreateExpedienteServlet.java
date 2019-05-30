@@ -87,11 +87,12 @@ public class CreateExpedienteServlet extends HttpServlet {
 			
 			
 			
-					nRegistros = pstmnt.executeUpdate();
+			nRegistros = pstmnt.executeUpdate();
 			
 			if(nRegistros > 0) {
 		
 				response.sendRedirect("home.html");
+				
 			}else {
 				
 				PrintWriter out = response.getWriter();

@@ -51,10 +51,9 @@ public class BusquedaServlet extends HttpServlet {
 		Statement stmnt = null;
 		ResultSet rs = null;
 		
-		PrintWriter salida= response.getWriter();
-		
+		PrintWriter salida = response.getWriter();
+		response.setContentType("text/html charset='UTF-8'");
 		try {
-			response.setContentType("text/html charset='UTF-8'");
 			
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(urlServidor,usuario,passw);
@@ -73,7 +72,7 @@ public class BusquedaServlet extends HttpServlet {
 				listaUsers.add(users);
 			}
 			request.setAttribute("list", listaUsers);
-			RequestDispatcher rst =request.getRequestDispatcher("busqueda.jsp");
+			RequestDispatcher rst = request.getRequestDispatcher("busqueda.jsp");
 			rst.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

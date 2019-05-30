@@ -44,7 +44,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mx-auto">
                 <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase text-expanded" href="home.html">Home</a>
+                    <a class="nav-link text-uppercase text-expanded" href="homeCJ.html">Home</a>
                 </li>
                 <li class="nav-item active px-lg-4">
                     <a class="nav-link text-uppercase text-expanded" href="busqueda.jsp">Busqueda
@@ -117,21 +117,11 @@
                 </div>
             </div>
     
-            <div class="social d-flex justify-content-center">
-                <a href="#" class="mx-2">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="mx-2">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="mx-2">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
+            
     
         </div>
     </section>
-
+    <br/>
     <section class="contact-section">
         <div class="container">
 			<div id="resultados" class="row">
@@ -157,7 +147,17 @@
         </div>
     </section>
         
-    
+    <div class="social d-flex justify-content-center">
+                <a href="#" class="mx-2">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="mx-2">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="mx-2">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
         <div class="container">

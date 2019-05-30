@@ -3,6 +3,7 @@ package mx.gob.ciudadjudicial.controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -70,10 +72,15 @@ public class SignUpServlet extends HttpServlet {
 			nRegistros = pstmnt.executeUpdate();
 			
 			if(nRegistros > 0) {
-				
-				response.getWriter().append("Registro añadido");
+				response.sendRedirect("index.jsp");
 			}else {
-				response.getWriter().append("Registro NO añadido");
+				PrintWriter out = response.getWriter();
+				RequestDispatcher dis = request.getRequestDispatcher("signUp.html");
+				out.println("<script type:\"text/javascript\">");
+				out.println("alert('Registro no añadido. Intente de nuevo')");
+				out.println("location='signUp.html'");
+				out.println("</script>");
+				dis.include(request, response); 
 			}
 			
 		} catch (Exception e) {

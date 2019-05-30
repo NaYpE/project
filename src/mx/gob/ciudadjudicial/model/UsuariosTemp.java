@@ -25,6 +25,7 @@ public class UsuariosTemp {
 		this.correo = correo;
 		this.password = password;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}

@@ -14,7 +14,6 @@
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	
     <!-- Custom styles for this template -->
-    <link href="css/business-casual.min.css" rel="stylesheet">
 	<link href="css/style2.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
     <title>Consejo de la Judicatura del Estado de Jalisco</title>
@@ -65,8 +64,7 @@
         <div class="col-xs-2 col-sm-1 col-md-2 col-lg-2 col-xl-3">
         </div>
         <div class="col-xs-8 col-sm-10 col-md-8 col-lg-8 col-xl-6">
-            <form class="formData">
-                <section id="contact">
+            <form class="formData" action="CreateExpedienteServlet" method="post">
                     <div class="container">
                         <h2 class="text-center text-uppercase text-secondary mb-0">EXPEDIENTES</h2>
                         <hr class="star-dark mb-5">
@@ -76,7 +74,7 @@
                                 <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-0">
                                     <label>EXPEDIENTE</label>
-                                    <input class="form-control" id="txtExpediente" type="text" placeholder="EXPEDIENTE" required="required" data-validation-required-message="Por favor ingrese el número de expediente">
+                                    <input class="form-control" id="txtExpe" name="txtExpe" type="text" placeholder="EXPEDIENTE" required="required" data-validation-required-message="Por favor ingrese el número de expediente">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
@@ -84,7 +82,7 @@
                                 <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>TOMO</label>
-                                    <input class="form-control" id="txtTomo" type="text" placeholder="TOMO">
+                                    <input class="form-control" id="txtTomo" name="txtTomo" type="text" placeholder="TOMO">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
@@ -98,13 +96,13 @@
                             <div class="control-group">
                                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>PARTIDO JUDICIAL</label>
-                                <input class="form-control" id="txtPArtidoJuicio" type="text" placeholder="PARTIDO JUDICIAL" required="required">
+                                <input class="form-control" id="txtPArtidoJudicial" name="txtPArtidoJudicial" type="text" placeholder="PARTIDO JUDICIAL" required="required">
                                 <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input list="browsers" id="txtbrowser" name="browser">
-                                <datalist id="browsers">
+                                <input list="browsers" id="txtbrowser" name="txtbrowser">
+                                <datalist id="txtbrowser">
                                     <option value="1° Familiar">
                                     <option value="2° Familiar">
                                     <option value="3° Familiar">
@@ -118,49 +116,49 @@
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>CLASE DE JUICIO</label>
-                                    <input class="form-control" id="txtJuicio" type="text" placeholder="CLASE DE JUICIO" required="required">
+                                    <input class="form-control" id="txtJuicio" name="txtJuicio" type="text" placeholder="CLASE DE JUICIO" required="required">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>ACTOR</label>
-                                    <input class="form-control" id="txtActor" type="text" placeholder="ACTOR" required="required">
+                                    <input class="form-control" id="txtActor" name="txtActor" type="text" placeholder="ACTOR" required="required">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>Abogado Patrono</label>
-                                    <input class="form-control" id="txtAbogadoPat" type="text" placeholder="Abogado Patrono">
+                                    <input class="form-control" id="txtAbogadoPat" name="txtAbogadoPat" type="text" placeholder="Abogado Patrono">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>Autorizados</label>
-                                    <input class="form-control" id="txtAutorizados" type="text" placeholder="Autorizados">
+                                    <input class="form-control" id="txtAutorizados" name="txtAutorizados" type="text" placeholder="Autorizados">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>DEMANDADO</label>
-                                    <input class="form-control" id="txtDemandado" type="text" placeholder="DEMANDADO" required="required">
+                                    <input class="form-control" id="txtDemandado" name="txtDemandado" type="text" placeholder="DEMANDADO" required="required">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>Abogado Patrono</label>
-                                    <input class="form-control" id="txtAbogadoPat2" type="text" placeholder="Abogado Patrono">
+                                    <input class="form-control" id="txtAbogadoPat2" name="txtAbogadoPat2" type="text" placeholder="Abogado Patrono">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                     <label>Autorizados</label>
-                                    <input class="form-control" id="txtAutorizados2" type="text" placeholder="Autorizados">
+                                    <input class="form-control" id="txtAutorizados2" name="txtAutorizados2" type="text" placeholder="Autorizados">
                                     <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
@@ -168,7 +166,7 @@
                                     <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                         <label>JUEZ LIC</label>
-                                        <input class="form-control" id="txtJuez" type="text" placeholder="JUEZ LIC" required="required" data-validation-required-message="Por favor ingrese nombre del Juéz">
+                                        <input class="form-control" id="txtJuez" name="txtJuez" type="text" placeholder="JUEZ LIC" required="required" data-validation-required-message="Por favor ingrese nombre del Juéz">
                                         <p class="help-block text-danger"></p>
                                         </div>
                                     </div>
@@ -176,7 +174,7 @@
                                     <div class="control-group col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
                                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                         <label>SRIO. LIC</label>
-                                        <input class="form-control" id="txtSrio" type="text" placeholder="SRIO. LIC" required="required" data-validation-required-message="Por favor ingrese el nombre del Secretario">
+                                        <input class="form-control" id="txtSrio" name="txtSrio" type="text" placeholder="SRIO. LIC" required="required" data-validation-required-message="Por favor ingrese el nombre del Secretario">
                                         <p class="help-block text-danger"></p>
                                         </div>
                                     </div>
@@ -191,12 +189,12 @@
                             </p>
                             <div id="success"></div>
                             <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Send">
                                 <button type="button" class="btn btn-primary btn-xl" id="sendMessageButton">Guardar</button>
                             </div>
                         </div>
                         </div>
                     </div>
-                </section>  
             </form>
         </div>
     </div>
@@ -205,17 +203,7 @@
 	<!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-  
-    <!-- Contact Form JavaScript -->
-    <script src="scripts/jqBootstrapValidation.js"></script>
-    <script src="scripts/contact_me.js"></script>
-  
-    <!-- Custom scripts for this template -->
-    <script src="scripts/freelancer.js"></script>
+    
     <script src="scripts/createExpediente.js"></script>
 </body>
 </html>

@@ -49,16 +49,23 @@ public class CreateExpedienteServlet extends HttpServlet {
 		String passw = props.getProperty("password");
 		String driver = props.getProperty("driver");
 
-		
-		Gson objGson = new Gson();
-		Expedientes miExpediente ;
-		String jsonExpediente;
-		jsonExpediente = request.getParameter("txtExpediente");
-		miExpediente = objGson.fromJson(jsonExpediente, Expedientes.class);
+		String expediente = request.getParameter("txtExpe");
+	    String tomo = request.getParameter("txtTomo"); 
+	    String partidojudicial = request.getParameter("txtPArtidoJudicial"); 
+	    String juzgado = request.getParameter("txtbrowser"); 
+	    String claseJuicio = request.getParameter("txtJuicio");
+	    String actor = request.getParameter("txtActor"); 
+	    String abogadoPatrono = request.getParameter("txtAbogadoPat");
+	    String autorizados = request.getParameter("txtAutorizados"); 
+	    String demandado = request.getParameter("txtDemandado"); 
+	    String abogadoPatrono2= request.getParameter("txtAbogadoPat2"); 
+	    String autorizados2= request.getParameter("txtAutorizados2"); 
+	    String juez= request.getParameter("txtJuez"); 
+	    String srio= request.getParameter("txtSrio"); 
+	    String fecha= request.getParameter("txtBirth"); 
 
 		int nRegistros = 0;
 		Connection conn = null;
-		ResultSet rs = null;
 		
 		try {
 			
@@ -66,37 +73,42 @@ public class CreateExpedienteServlet extends HttpServlet {
 			conn = DriverManager.getConnection(urlServidor, usuario, passw);
 			
 			String query ="INSERT INTO ciudad_judicial.expedientes ("
-					+ "idExpediente,"
-					+ "actor_expediente,"
-					+ "demandante_expediente,"
-					+ "tipo_juicio_expediente,"
 					+ "num_expediente,"
 					+ "tomo,"
+					+ "partido_judicial_expediente,"
+					+ "juzgado_expediente,"
+					+ "tipo_juicio_expediente,"
+					+ "actor_expediente,"
 					+ "abogado_patrono,"
 					+ "autorizados,"
-					+ "fecha,"
+					+ "demandado_expediente,"
 					+ "abogados_patrono_dos,"
 					+ "autorizados_dos,"
 					+ "juez_expediente,"
-					+ "juzgado_expediente,"
-					+ "srio_lic) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "srio_lic,"
+					+ "fecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement pstmnt = conn.prepareStatement(query);
 			
+			pstmnt.setString(1, expediente);
+			pstmnt.setString(2, tomo);
+			pstmnt.setString(3, partidojudicial);
+			pstmnt.setString(4, juzgado);
+			pstmnt.setString(5, claseJuicio);
+			pstmnt.setString(6, actor);
+			pstmnt.setString(7, abogadoPatrono);
+			pstmnt.setString(8, autorizados);
+			pstmnt.setString(9, demandado);
+			pstmnt.setString(10, abogadoPatrono2);
+			pstmnt.setString(11, autorizados2);
+			pstmnt.setString(12, juez);
+			pstmnt.setString(13, srio);
+			pstmnt.setString(14, fecha);
 			
-			pstmnt.setString(1, miExpediente.getActor());
-			pstmnt.setString(2, miExpediente.getDemandado());
-			pstmnt.setString(3, miExpediente.getPartidojuicio());
-			pstmnt.setInt(4, miExpediente.getExpediente());
-			pstmnt.setString(5, miExpediente.getTomo());
-			pstmnt.setString(6, miExpediente.getAbogadoPatrono());
-			pstmnt.setString(7, miExpediente.getAutorizados());
-			pstmnt.setString(8, miExpediente.getFecha());
-			pstmnt.setString(9, miExpediente.getAbogadoPatrono2());
-			pstmnt.setString(10, miExpediente.getAutorizados2());
-			pstmnt.setString(11, miExpediente.getJuez());
-			pstmnt.setString(12, miExpediente.getJuzgado());
-			pstmnt.setString(13, miExpediente.getSrio());
+			
+			
+			
+			
 			
 			
 			

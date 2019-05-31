@@ -29,7 +29,7 @@ public class SignUpServlet extends HttpServlet {
 		Properties props = new Properties();
 		String archivo = "config.properties";
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(archivo);
-		
+		PrintWriter out = response.getWriter();
 		if(inputStream != null) {
 			props.load(inputStream);
 		}else {
@@ -72,9 +72,10 @@ public class SignUpServlet extends HttpServlet {
 			nRegistros = pstmnt.executeUpdate();
 			
 			if(nRegistros > 0) {
-				response.sendRedirect("index.jsp");
+				RequestDispatcher dis = request.getRequestDispatcher("index.html");
+				dis.include(request, response);
 			}else {
-				PrintWriter out = response.getWriter();
+				
 				RequestDispatcher dis = request.getRequestDispatcher("signUp.html");
 				out.println("<script type:\"text/javascript\">");
 				out.println("alert('Registro no añadido. Intente de nuevo')");

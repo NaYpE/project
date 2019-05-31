@@ -58,7 +58,7 @@ public class BusquedaServlet extends HttpServlet {
 			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection(urlServidor,usuario,passw);
 			stmnt = conn.createStatement();
-			rs= stmnt.executeQuery(" SELECT * FROM judicial.expedientes WHERE (num_expediente=\""+ expediente+"\" OR actor_expediente =\""+ expediente +"\")");
+			rs= stmnt.executeQuery("SELECT * FROM ciudad_judicial.usuarios WHERE (nombre=\""+ expediente+"\" OR apellidoP =\""+ expediente +"\")");
 			UsuariosTemp users;
 			ArrayList<UsuariosTemp> listaUsers = new ArrayList<UsuariosTemp>();
 			while (rs.next()) {

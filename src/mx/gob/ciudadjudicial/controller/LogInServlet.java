@@ -60,14 +60,14 @@ public class LogInServlet extends HttpServlet {
 			conn = DriverManager.getConnection(urlServidor, usuario, passw);
 			stmnt = conn.createStatement();
 			
-			rs = stmnt.executeQuery(" SELECT * FROM judicial.usuarios WHERE correo_usuario = \""+ correo +"\"");
+			rs = stmnt.executeQuery("SELECT * FROM ciudad_judicial.usuarios WHERE email = \""+ correo +"\"");
 			
 			rs.next();
 			
-			correoSQL = rs.getString("correo_usuario");
-			passwordSQL = rs.getString("contrasena_usuario");
-			nombreSQL = rs.getString("nombre_usuario");
-			apellidoSQL = rs.getString("apellido_paterno_usuario");
+			correoSQL = rs.getString("email");
+			passwordSQL = rs.getString("password");
+			nombreSQL = rs.getString("nombre");
+			apellidoSQL = rs.getString("apellidoP");
 			
 			if(correo.equals(correoSQL) && password.equals(passwordSQL)) {
 				

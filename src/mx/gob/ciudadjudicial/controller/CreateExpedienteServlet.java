@@ -28,7 +28,6 @@ import mx.gob.ciudadjudicial.model.Expedientes;
 
 @WebServlet("/CreateExpedienteServlet")
 @MultipartConfig
-
 public class CreateExpedienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
@@ -66,7 +65,21 @@ public class CreateExpedienteServlet extends HttpServlet {
 			Class.forName(driver).getDeclaredConstructor().newInstance();
 			conn = DriverManager.getConnection(urlServidor, usuario, passw);
 			
-			String query ="INSERT INTO judicial.expedientes (idExpedientes,actor_expediente,demandante_expediente,tipo_juicio_expediente,num_expediente,tomo,abogado_patrono,autorizados,fecha,abogado_patrono_dos,autorizados_dos,juez_expediente,juzgado_expediente,srio_lic) VALUES (0,?,?,?,?, ?, ?, ?, ?, ?, ?,?,?,?)";
+			String query ="INSERT INTO ciudad_judicial.expedientes ("
+					+ "idExpediente,"
+					+ "actor_expediente,"
+					+ "demandante_expediente,"
+					+ "tipo_juicio_expediente,"
+					+ "num_expediente,"
+					+ "tomo,"
+					+ "abogado_patrono,"
+					+ "autorizados,"
+					+ "fecha,"
+					+ "abogados_patrono_dos,"
+					+ "autorizados_dos,"
+					+ "juez_expediente,"
+					+ "juzgado_expediente,"
+					+ "srio_lic) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement pstmnt = conn.prepareStatement(query);
 			
@@ -91,20 +104,8 @@ public class CreateExpedienteServlet extends HttpServlet {
 			
 			if(nRegistros > 0) {
 		
-
-				response.sendRedirect("home.html");
-
-				System.out.println("guardo archivo");
-				response.sendRedirect("homeCJ.html");
-				PrintWriter out = response.getWriter();
 				RequestDispatcher dis = request.getRequestDispatcher("homeCJ.html");
-				out.println("<script type:\"text/javascript\">");
-				out.println("alert('Expediente agregado con exito')");
-				out.println("location='homeCJ.html'");
-				out.println("</script>");
 				dis.include(request, response); 
-				
-
 				
 			}else {
 				

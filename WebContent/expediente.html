@@ -19,6 +19,12 @@
     <title>Consejo de la Judicatura del Estado de Jalisco</title>
 </head>
 <body>
+<div style="float:right">
+    <c:out value="${user.nameSQL}"></c:out>
+    	<a href="LogOutServlet">
+    		Cerrar Sesión
+    	</a>
+    </div>
 	<div class ="container">
 		<header>
 			<img src="images/banner_superior.jpg" id="banner">
@@ -40,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav mx-auto">
             <li class="nav-item px-lg-4">
-                <a class="nav-link text-uppercase text-expanded" href="homeCJ.html">Home</a>
+                <a class="nav-link text-uppercase text-expanded" href="homeCJ.jsp">Home</a>
             </li>
             <li class="nav-item px-lg-4">
                 <a class="nav-link text-uppercase text-expanded" href="busqueda.jsp">Busqueda</a>
@@ -49,9 +55,6 @@
                 <a class="nav-link text-uppercase text-expanded" href="expediente.html">Expedientes
                     <span class="sr-only">(current)</span>
                 </a>
-            </li>
-            <li class="nav-item px-lg-4">
-                <a class="nav-link text-uppercase text-expanded" href="#">Historial</a>
             </li>
             </ul>
         </div>
@@ -102,13 +105,16 @@
                             </div>
                             <div class="control-group">
                                 <input list="browsers" id="txtbrowser" name="txtbrowser">
-                                <datalist id="txtbrowser">
+                                <datalist id="browsers">
                                     <option value="1° Familiar">
                                     <option value="2° Familiar">
                                     <option value="3° Familiar">
                                     <option value="1° Civil">
                                     <option value="2° Civil">
                                     <option value="3° Civil">
+                                    <option value="1° Mercantil">
+                                    <option value="2° Mercantil">
+                                    <option value="3° Mercantil">
                                 </datalist>
                             </div>
                             <br>
@@ -189,8 +195,7 @@
                             </p>
                             <div id="success"></div>
                             <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Send">
-                                <button type="button" class="btn btn-primary btn-xl" id="sendMessageButton">Guardar</button>
+                            <input type="submit" class="btn btn-primary btn-xl" value="GUARDAR">
                             </div>
                         </div>
                         </div>
@@ -204,6 +209,5 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
-    <script src="scripts/createExpediente.js"></script>
 </body>
 </html>

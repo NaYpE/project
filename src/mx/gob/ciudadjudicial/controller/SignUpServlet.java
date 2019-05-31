@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SignUpServlet
@@ -48,52 +51,81 @@ public class SignUpServlet extends HttpServlet {
 		String sexo = request.getParameter("txtSexo");
 		String correo = request.getParameter("txtCorreo");
 		String password = request.getParameter("txtPassword");
+		String password2 = request.getParameter("txtPassword2");
+		
 		int nRegistros = 0;
-		
+		RequestDispatcher dis;
 		Connection conn = null;
-		ResultSet rs = null;
+		HttpSession objetoSesion=request.getSession(true);  
 		
-		try {
-			
-			Class.forName(driver).getDeclaredConstructor().newInstance();
-			conn = DriverManager.getConnection(urlServidor, usuario, passw);
-			
-			String query ="INSERT INTO ciudad_judicial.usuarios (nombre, apellidoP, apellidoM, fechaNacimiento, sexo, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
-			
-			PreparedStatement pstmnt = conn.prepareStatement(query);
-			pstmnt.setString(1, nombre);
-			pstmnt.setString(2, apellidoP);
-			pstmnt.setString(3, apellidoM);
-			pstmnt.setString(4, fechaNacimiento);
-			pstmnt.setString(5, sexo);
-			pstmnt.setString(6, correo);
-			pstmnt.setString(7, password);
-			
-			nRegistros = pstmnt.executeUpdate();
-			
-			if(nRegistros > 0) {
-				RequestDispatcher dis = request.getRequestDispatcher("index.html");
-				dis.include(request, response);
-			}else {
-				
-				RequestDispatcher dis = request.getRequestDispatcher("signUp.html");
+		Pattern p = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
+		Matcher m = p.matcher(correo);
+		
+        if(nombre.isEmpty() || nombre.isEmpty() || password.isEmpty() || password2.isEmpty()){
+        	objetoSesion.setAttribute("error", "Hay campos vacios");
+        }else {        
+	    	if(password.equals(password2)) {
+	    		if(password.length() >= 8) {
+	    			
+	    			try {
+	    				
+	    				Class.forName(driver).getDeclaredConstructor().newInstance();
+	    				conn = DriverManager.getConnection(urlServidor, usuario, passw);
+	    				
+	    				String query ="INSERT INTO ciudad_judicial.usuarios (nombreUsuario, apellidoPUsuario, apellidoMUsuario, fechaNacimientoUsuario, sexoUsuario, emailUsuario, passwordUsuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	    				
+	    				PreparedStatement pstmnt = conn.prepareStatement(query);
+	    				pstmnt.setString(1, nombre);
+	    				pstmnt.setString(2, apellidoP);
+	    				pstmnt.setString(3, apellidoM);
+	    				pstmnt.setString(4, fechaNacimiento);
+	    				pstmnt.setString(5, sexo);
+	    				pstmnt.setString(6, correo);
+	    				pstmnt.setString(7, password);
+	    				
+	    				nRegistros = pstmnt.executeUpdate();
+	    				
+	    				if(nRegistros > 0) {
+	    					dis = request.getRequestDispatcher("index.html");
+	    					dis.include(request, response);
+	    				}else {
+	    					
+	    					dis = request.getRequestDispatcher("signUp.html");
+	    					out.println("<script type:\"text/javascript\">");
+	    					out.println("alert('Registro no añadido. Intente de nuevo')");
+	    					out.println("location='signUp.html'");
+	    					out.println("</script>");
+	    					dis.include(request, response); 
+	    				}
+	    				
+	    			} catch (Exception e) {
+	    				
+	    				e.printStackTrace();
+	    			}finally {
+	    				try {
+	    					conn.close();
+	    				} catch (SQLException e) {
+	    					// TODO Auto-generated catch block
+	    					e.printStackTrace();
+	    				}
+	    			}
+	    			
+	    		}else {
+	    			dis = request.getRequestDispatcher("signUp.html");
+					out.println("<script type:\"text/javascript\">");
+					out.println("alert('Registro no añadido. PASSWORD MINIMO 8 CARACTERES')");
+					out.println("location='signUp.html'");
+					out.println("</script>");
+					dis.include(request, response);
+	    		}
+	    	}else {
+	    		dis = request.getRequestDispatcher("signUp.html");
 				out.println("<script type:\"text/javascript\">");
-				out.println("alert('Registro no añadido. Intente de nuevo')");
+				out.println("alert('Registro no añadido. LAS CONTRASEÑAS NO COINCIDEN')");
 				out.println("location='signUp.html'");
 				out.println("</script>");
-				dis.include(request, response); 
-			}
-			
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+				dis.include(request, response);
+	    	}
+        }
 	}
 }

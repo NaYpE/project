@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import mx.gob.ciudadjudicial.model.UsuariosTemp;
+
 /**
  * Servlet implementation class LogInServlet
  */
@@ -54,28 +56,32 @@ public class LogInServlet extends HttpServlet {
 		Statement stmnt = null;
 		ResultSet rs = null;
 		
+		UsuariosTemp user;
 		try {
 			
 			Class.forName(driver).getDeclaredConstructor().newInstance();
 			conn = DriverManager.getConnection(urlServidor, usuario, passw);
 			stmnt = conn.createStatement();
 			
-			rs = stmnt.executeQuery("SELECT * FROM ciudad_judicial.usuarios WHERE email = \""+ correo +"\"");
+			rs = stmnt.executeQuery("SELECT nombreUsuario, apellidoPUsuario, emailUsuario, passwordUsuario FROM ciudad_judicial.usuarios WHERE emailUsuario = \""+ correo +"\" AND passwordUsuario =\""+ password +"\"");
 			
 			rs.next();
 			
-			correoSQL = rs.getString("email");
-			passwordSQL = rs.getString("password");
-			nombreSQL = rs.getString("nombre");
-			apellidoSQL = rs.getString("apellidoP");
+			correoSQL = rs.getString("emailUsuario");
+			passwordSQL = rs.getString("passwordUsuario");
+			nombreSQL = rs.getString("nombreUsuario");
+			apellidoSQL = rs.getString("apellidoPUsuario");
 			
+			user = new UsuariosTemp(nombreSQL, apellidoSQL);
+			
+			//request.setAttribute("user", nombreSQL);
 			if(correo.equals(correoSQL) && password.equals(passwordSQL)) {
 				
 				HttpSession objetoSesion = request.getSession(true);
 				objetoSesion.setAttribute("Usuario", correo);
 				objetoSesion.setAttribute("Password", password);
 				objetoSesion.setMaxInactiveInterval(30);
-				response.sendRedirect("homeCJ.html");
+				response.sendRedirect("homeCJ.jsp");
 				
 			}else {
 				

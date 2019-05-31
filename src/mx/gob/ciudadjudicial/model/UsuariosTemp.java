@@ -14,6 +14,11 @@ public class UsuariosTemp {
 		
 	}
 	
+	public UsuariosTemp(String nombre, String apellidoP) {
+		this.nombre = nombre;
+		this.apellidoP = apellidoP;
+	}
+	
 	public UsuariosTemp(String nombre, String apellidoP, String apellidoM, String fechaNacimiento, String sexo,
 			String correo, String password) {
 		super();

@@ -33,7 +33,7 @@ public class CreateExpedienteServlet extends HttpServlet {
   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		PrintWriter out = response.getWriter();
 		Properties props = new Properties();
 		String archivo = "config.properties";
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(archivo);
@@ -74,19 +74,19 @@ public class CreateExpedienteServlet extends HttpServlet {
 			
 			String query ="INSERT INTO ciudad_judicial.expedientes ("
 					+ "num_expediente,"
-					+ "tomo,"
+					+ "tomo_expediente,"
 					+ "partido_judicial_expediente,"
 					+ "juzgado_expediente,"
 					+ "tipo_juicio_expediente,"
 					+ "actor_expediente,"
-					+ "abogado_patrono,"
-					+ "autorizados,"
+					+ "abogado_patrono_expediente,"
+					+ "autorizados_expediente,"
 					+ "demandado_expediente,"
-					+ "abogados_patrono_dos,"
-					+ "autorizados_dos,"
+					+ "abogados_patrono_dos_expediente,"
+					+ "autorizados_dos_expediente,"
 					+ "juez_expediente,"
-					+ "srio_lic,"
-					+ "fecha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "srio_lic_expediente,"
+					+ "fecha_expediente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement pstmnt = conn.prepareStatement(query);
 			
@@ -105,23 +105,20 @@ public class CreateExpedienteServlet extends HttpServlet {
 			pstmnt.setString(13, srio);
 			pstmnt.setString(14, fecha);
 			
-			
-			
-			
-			
-			
-			
-			
 			nRegistros = pstmnt.executeUpdate();
 			
 			if(nRegistros > 0) {
 		
-				RequestDispatcher dis = request.getRequestDispatcher("homeCJ.html");
+				RequestDispatcher dis = request.getRequestDispatcher("homeCJ.jsp");
+				out.println("<script type:\"text/javascript\">");
+				out.println("alert('Expediente guardado!')");
+				out.println("location='expediente.html'");
+				out.println("</script>");
 				dis.include(request, response); 
 				
 			}else {
 				
-				PrintWriter out = response.getWriter();
+				
 				RequestDispatcher dis = request.getRequestDispatcher("expediente.html");
 				out.println("<script type:\"text/javascript\">");
 				out.println("alert('Registro no añadido. Intente de nuevo')");

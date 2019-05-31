@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,19 +17,27 @@
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- Custom styles for this template -->
+	<link href="css/business-casual.css" rel="stylesheet">
 	<link href="css/style2.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
     <title>Consejo de la Judicatura del Estado de Jalisco</title>
 </head>
 <body>
-               
+    <div style="float:right">
+    <c:out value="${user.nameSQL}"></c:out>
+    	<a href="LogOutServlet">
+    		Cerrar Sesión
+    	</a>
+    </div>
+          
 	<div class ="container">
 		<header>
 			<img src="images/banner_superior.jpg" id="banner">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-					<h2></h2>
-				</div>
+                    
+                </div>
+                
 			</div>
 		</header>
     </div>
@@ -42,7 +53,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mx-auto">
                 <li class="nav-item active px-lg-4">
-                    <a class="nav-link text-uppercase text-expanded" href="homeCJ.html">Home
+                    <a class="nav-link text-uppercase text-expanded" href="homeCJ.jsp">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -51,9 +62,6 @@
                 </li>
                 <li class="nav-item px-lg-4">
                     <a class="nav-link text-uppercase text-expanded" href="expediente.html">Expedientes</a>
-                </li>
-                <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase text-expanded" href="#">Historial</a>
                 </li>
                 </ul>
             </div>
@@ -120,15 +128,69 @@
         </div>
     </section>
 
-    <section class="contact-section">
-        <div class="container">
-
-            <div id="resultados" class="row">
-
-            </div>
-
+    <section class="page-section">
+    <div class="container">
+      <div class="product-item">
+        <div class="product-item-title d-flex">
+          <div class="bg-faded p-5 d-flex ml-auto rounded">
+            <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">Generation México, 31/05/19</span>
+              <span class="section-heading-lower">Cohort 13 se gradua</span>
+            </h2>
+          </div>
         </div>
-    </section>
+        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="images/noticia1.jpeg" alt="">
+        <div class="product-item-description d-flex mr-auto">
+          <div class="bg-faded p-5 rounded">
+            <p class="mb-0">Llegó el día tan esperado para el cohort 13 de Generation pues Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea aspernatur quibusdam odit non laudantium autem dolores quia quisquam quae debitis!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="product-item">
+        <div class="product-item-title d-flex">
+          <div class="bg-faded p-5 d-flex mr-auto rounded">
+            <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">El Universal, Juan Arvizu</span>
+              <span class="section-heading-lower">Senadores y Diputados han pedido protección</span>
+            </h2>
+          </div>
+        </div>
+        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="images/noticia2.JPG" alt="">
+        <div class="product-item-description d-flex ml-auto">
+          <div class="bg-faded p-5 rounded">
+            <p class="mb-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda necessitatibus accusamus iste molestiae eos ad quas reiciendis, iusto eveniet doloribus accusantium, ullam, minima facilis incidunt vel debitis cumque dolores commodi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="product-item">
+        <div class="product-item-title d-flex">
+          <div class="bg-faded p-5 d-flex ml-auto rounded">
+            <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">MILENIO DIGITAL
+Ciudad de México / 30.05.2019</span>
+              <span class="section-heading-lower">PRI expulsa a César Duarte</span>
+            </h2>
+          </div>
+        </div>
+        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="images/products-03.jpg" alt="">
+        <div class="product-item-description d-flex mr-auto">
+          <div class="bg-faded p-5 rounded">
+            <p class="mb-0">La Comisión Nacional de Justicia Partidaria del PRI avaló este jueves la expulsión de César Duarte Jáquez, ex gobernador de Chihuahua, por lo que dejará de formar parte del PRI y “por ningún motivo podrá reafiliarse”. Te recomendamos: Corral: SRE alista solicitud de extradición de César Duarte El oficio, de siete puntos, señala en el primero de ello que “es fundado el procedimiento sancionador, por las razones jurídicas debidamente fundamentadas en los considerandos relativas a esta resolución” https://www.milenio.com/politica/cesar-duarte-pri-expulsa-gobernador-chihuahua</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
         
     
     <!-- Footer -->
